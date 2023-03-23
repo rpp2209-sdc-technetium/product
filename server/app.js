@@ -12,8 +12,35 @@ app.use(express.urlencoded());
 // app.use(bodyParser.json());
 app.use(cors());
 // app.use(express.static(path.join(__dirname,'../../FECv2/dist')));
-app.use('/:product_id', express.static(path.join(__dirname,'../../FECv2/dist')));
+// app.use('/:product_id', express.static(path.join(__dirname,'../../FECv2/dist')));
 
+
+
+app.post('/products', (req, res) => {
+  const product_id = req.body.product_id;
+  dbQuery.getProductId(product_id, (err, data) => {
+    if (data) {
+      // console.log('data', data)
+      res.status(200).send(data);
+    } else {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.get('/products', (req, res) => {
+  let page;
+  let count;
+  req.query.page ? page = req.query.page : page = 1;
+  req.query.count ? count = req.query.count : count = 5;
+  dbQuery.getAllData('product', page, count, (err, data) => {
+    if (data) {
+      res.status(200).send(data);
+    } else {
+      res.status(500).send(err);
+    }
+  });
+});
 
 app.get('/:product_id', (req, res) => {
   console.log(req.params, req.query)
@@ -27,32 +54,6 @@ app.get('/:product_id', (req, res) => {
   dbQuery.getProductId(req.params.product_id, (err, data) => {
     if (data) {
       console.log('data', data)
-      res.status(200).send(data);
-    } else {
-      res.status(500).send(err);
-    }
-  });
-});
-
-app.post('/products', (req, res) => {
-  const product_id = req.body.product_id;
-  dbQuery.getProductId(product_id, (err, data) => {
-    if (data) {
-      // console.log('data', data)
-      res.status(200).send(data);
-    } else {
-      res.status(500).send(err);
-    }
-  });
-})
-
-app.get('/products', (req, res) => {
-  let page;
-  let count;
-  req.query.page ? page = req.query.page : page = 1;
-  req.query.count ? count = req.query.count : count = 5;
-  dbQuery.getAllData('product', page, count, (err, data) => {
-    if (data) {
       res.status(200).send(data);
     } else {
       res.status(500).send(err);
