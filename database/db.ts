@@ -94,39 +94,38 @@ pool.connect()
     pool.query(`
         create index if not exists id_product_index on product (id);
       `)
-      .then(console.log('Index has been created for product'))
-      .catch(console.log('Index creation failed for product'));
+      .then(() => console.log('Index has been created for product'))
+      .catch(() => console.log('Index creation failed for product'));
 
     pool.query(`
         create index if not exists id_styles_index on styles (product_id);
       `)
-      .then(console.log('Index has been created for styles'))
-      .catch(console.log('Index creation failed for styles'));
+      .then(() => console.log('Index has been created for styles'))
+      .catch(() => console.log('Index creation failed for styles'));
 
     pool.query(`
         create index if not exists id_features_index on features (product_id);
       `)
-      .then(console.log('Index has been created for features'))
-      .catch(console.log('Index creation failed for features'));
+      .then(() => console.log('Index has been created for features'))
+      .catch(() => console.log('Index creation failed for features'));
 
     pool.query(`
         create index if not exists id_related_index on related (current_product_id);
       `)
-      .then(console.log('Index has been created for related'))
-      .catch(console.log('Index creation failed for related'));
+      .then(() => console.log('Index has been created for related'))
+      .catch(() => console.log('Index creation failed for related'));
 
     pool.query(`
       create index if not exists id_skus_index on skus (styleid);
       `)
-      .then(console.log('Index has been created for skus'))
-      .catch(console.log('Index creation failed for skus'));
+      .then(() => console.log('Index has been created for skus'))
+      .catch(() => console.log('Index creation failed for skus'));
 
     pool.query(`
       create index if not exists id_photos_index on photos (styleid);
       `)
-      .then(console.log('Index has been created for skus'))
-      .catch(console.log('Index creation failed for skus'));
-
+      .then(() => console.log('Index has been created for photos'))
+      .catch(() => console.log('Index creation failed for photos'));
   })
   .catch(err => {
     console.log('Connection failed')
