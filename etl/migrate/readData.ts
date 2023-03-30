@@ -7,5 +7,5 @@ const databaseNames = [
 ];
 
 for (let i of databaseNames) {
-  dbQuery.etl(i, `/Users/juhmal/Desktop/product/etl/data/${i}.csv`);
+  dbQuery.etl(i, `/etl/data/${i}.csv`);
 }
