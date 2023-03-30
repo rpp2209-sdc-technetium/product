@@ -43,17 +43,8 @@ app.get('/products', (req, res) => {
 });
 
 app.get('/:product_id', (req, res) => {
-  console.log(req.params, req.query)
-  // axios.get(`http://localhost:3000/products/${req.params.product_id}`, (err, data) => {
-  //   if (data) {
-  //     res.status(200).send(data.data);
-  //   } else {
-  //     res.status(500).send(err)
-  //   }
-  // })
   dbQuery.getProductId(req.params.product_id, (err, data) => {
     if (data) {
-      console.log('data', data)
       res.status(200).send(data);
     } else {
       res.status(500).send(err);

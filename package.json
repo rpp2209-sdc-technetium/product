@@ -6,7 +6,10 @@
   "scripts": {
     "test": "jest",
     "testCoverage": "jest --coverage",
-    "stressTest": "k6 run ./stress_tests/products.js",
+    "k6product": "k6 run ./stress_tests/k6/products.js",
+    "k6related": "k6 run ./stress_tests/k6/related.js",
+    "k6styles": "k6 run ./stress_tests/k6/styles.js",
+    "k6productId": "k6 run ./stress_tests/k6/productId.js",
     "server": "nodemon ./server/server.js"
   },
   "repository": {
