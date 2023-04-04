@@ -120,6 +120,7 @@ const getPhotosAndSkus = (count, result, callback) => {
 
 
 const etl = (tableName, filePath) => {
+  console.log(`\\copy ${tableName} from '${filePath}' delimiter ',' csv header`)
   db.pool.query(`copy ${tableName} from '${filePath}' delimiter ',' csv header`)
     .then(() => {
       console.log(`Data has been inserted into ${tableName}`);
