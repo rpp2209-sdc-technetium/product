@@ -42,15 +42,7 @@ app.get('/products', (req, res) => {
   });
 });
 
-app.get('/:product_id', (req, res) => {
-  dbQuery.getProductId(req.params.product_id, (err, data) => {
-    if (data) {
-      res.status(200).send(data);
-    } else {
-      res.status(500).send(err);
-    }
-  });
-});
+
 
 app.get('/products/:product_id', (req, res) => {
   dbQuery.getProductId(req.params.product_id, (err, data) => {
@@ -65,7 +57,6 @@ app.get('/products/:product_id', (req, res) => {
 
 app.get('/products/:product_id/styles', (req, res) => {
   dbQuery.getStyle(req.params.product_id, (err, data) => {
-    console.log(data)
     if (data) {
       res.status(200).send(data);
     } else {
@@ -76,6 +67,20 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 app.get('/products/:product_id/related', (req, res) => {
   dbQuery.getRelated(req.params.product_id, (err, data) => {
+    if (data) {
+      res.status(200).send(data);
+    } else {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.get('/loaderio-b5a6697b355eddf2e147c8fd99278c34', (req, res) => {
+  res.status(200).send('loaderio-b5a6697b355eddf2e147c8fd99278c34');
+});
+
+app.get('/:product_id', (req, res) => {
+  dbQuery.getProductId(req.params.product_id, (err, data) => {
     if (data) {
       res.status(200).send(data);
     } else {
