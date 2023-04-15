@@ -30,7 +30,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fs.promises": "^0.1.2",
-    "newrelic": "^9.13.0",
+    "newrelic": "^9.15.0",
     "nodemon": "^2.0.21",
     "pg": "^8.9.0",
     "typescript": "^4.9.5"
